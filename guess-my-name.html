@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Guess My Name</title>
+	<style type="text/css">
+		div {
+			width: 100px;
+			height: 100px;
+		}
+	</style>
+	<script src="./js/jquery-3.1.1.js"></script>
+
+</head>
+
+<body>
+	counter: <span class="counter"> 0 </span>
+	<br>
+	<input type="text" id="my-name" placeholder="Guess My Name" />
+	<h3 class="my-name"></h3>
+	<p class="result"></p>
+	<script>
+		var counter = parseInt("0")
+		var myname = "maram"
+		var arr = []
+
+		$('#my-name').on("input", function () {
+			var input = $(this).val()
+			if (input.length != 0) {
+				counter++
+				//console.log(counter)
+				$('.counter').html(counter)
+			}
+			var num = 0;
+			var arr = []
+			var i = counter + 1
+			for (let i = 0; i < input.length; i++) {
+				if (input[i] == myname[num]) {
+					
+					arr.push(myname[num].toUpperCase())
+					$('.my-name').html(arr)
+					
+					console.log(arr)
+					
+					num++
+					
+				 
+				}
+				if(arr.length==myname.length){
+						$('.result').html("Good Job, You did it in "+counter+" Times")
+						counter=0;
+						$('.counter').html(counter)
+						$('#my-name').prop('disabled',true)
+					}
+				
+
+			}
+
+
+		})
+
+
+	</script>
+</body>
+
+</html>
